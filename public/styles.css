@@ -71,6 +71,7 @@ a {
   border:1px solid #666;
 }
 #footer {
+  width:500px;
   margin:10px 0;
   color:#999;
   font-size:11px;
