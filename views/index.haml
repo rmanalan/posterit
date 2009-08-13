@@ -7,7 +7,11 @@
     %br
     %label{:for => "body"} Body
     %br
-    %textarea{:id => "post-body", :name => "body"}= @params[:body]
+    - if @params[:body] 
+      - body = @params[:body]
+    - else
+      - body = "<p>Source: #{@params[:source]}: <a href='#{@params[:shorturl]}'>#{@params[:shorturl]}</a></p><div class='posterous_quote_citation'>posted from <a href='http://www.google.com/reader/view/'>Google Reader</a></div>"
+    %textarea{:id => "post-body", :name => "body"}= body
     %br
     %input{:type => "checkbox", :value => 0, :checked => false, :name => "autopost"}
     %label{:for => "autopost"} Autopost everywhere
