@@ -19,6 +19,10 @@ h1#logo {
   color:#8B6933;
   font-weight:normal;
 }
+h1 a {
+  text-decoration:none;
+  color:#8B6933;
+}
 label {
   font-weight:bold;
 }
