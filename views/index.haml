@@ -9,8 +9,14 @@
     %br
     - if @params[:body] 
       - body = @params[:body]
-    - else
+    - elsif @params[:title] and @params[:shorturl] and @params[:source]
       - body = "<p>Source: #{@params[:source]}: <a href='#{@params[:shorturl]}'>#{@params[:shorturl]}</a></p><div class='posterous_quote_citation'>posted from <a href='http://www.google.com/reader/view/'>Google Reader</a></div>"
+    - elsif @params[:title] and @params[:url] and @params[:source]
+      - body = "<p>Source: #{@params[:source]}: <a href='#{@params[:url]}'>#{@params[:url]}</a></p><div class='posterous_quote_citation'>posted from <a href='http://www.google.com/reader/view/'>Google Reader</a></div>"
+    - elsif @params[:title] and @params[:url]
+      - body = "<p><a href='#{@params[:url]}'>#{@params[:url]}</a></p><div class='posterous_quote_citation'>posted from <a href='http://www.google.com/reader/view/'>Google Reader</a></div>"
+    - else
+      - body = ""
     %textarea{:id => "post-body", :name => "body"}= body
     %br
     %input{:type => "checkbox", :value => 0, :checked => false, :name => "autopost"}
