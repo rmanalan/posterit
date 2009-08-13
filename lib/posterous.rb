@@ -15,6 +15,6 @@ class Posterous
 
   def newpost(title, body, autopost = 0)
     self.class.get('/api/newpost', {:query => 
-                   {:title => title, :body => body, :autopost => 0, :source => "Posterit", :sourceLink => "http://posterit.heroku.com"}})
+                   {:title => title, :body => body, :autopost => autopost, :source => "Posterit", :sourceLink => "http://posterit.heroku.com"}})
   end
 end
