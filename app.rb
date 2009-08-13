@@ -4,6 +4,7 @@ require 'haml'
 require 'lib/posterous'
 
 set :haml, {:format => :html5 }
+set :environment, :production
 
 get '/' do
   @params = params
