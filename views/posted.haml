@@ -1,0 +1,11 @@
+%h1#logo posterit
+#success
+  %h1 Your post has been sent to Posterous!
+  You can visit your post at:
+  %a{:href => @resp['rsp']['post']['longurl']}= @resp['rsp']['post']['longurl']
+#footer
+  This service is provided for free and without support by 
+  %a{:href => "http://twitter.com/rmanalan", :target => "_blank"} @rmanalan
+  \. The source code is available at
+  %a{:href => "http://github.com/manalang/posterit", :target => ""} GitHub
+  \.

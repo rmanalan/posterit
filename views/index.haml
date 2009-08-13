@@ -1,0 +1,32 @@
+%h1#logo posterit
+#main
+  %form{:action => "/", :method => "POST", :id => "post-form"}
+    %label{:for => "title"} Title
+    %br
+    %input{:type => "text", :value => @params[:title], :id => "post-title", :name => "title"}
+    %br
+    %label{:for => "body"} Body
+    %br
+    %textarea{:id => "post-body", :name => "body"}= @params[:body]
+    %br
+    %input{:type => "checkbox", :value => 0, :checked => false, :name => "autopost"}
+    %label{:for => "autopost"} Autopost everywhere
+    %br
+    %br
+    #auth
+      %label{:for => "email"} Email
+      %br
+      %input{:type => "text", :value => @email, :id => "posterous-email", :name => "email", :class => "text"}
+      %label{:for => "title"} Password
+      %br
+      %input{:type => "password", :value => @password, :id => "posterous-password", :name => "password", :class => "text"}
+      %br
+      %small Your email and password are not stored. Use your browser's "save password" functionality if you want your email and password remembered.
+    %br
+    %input{:type => "submit", :value => "Post", :id => "post-button"}
+#footer
+  This service is provided for free and without support by 
+  %a{:href => "http://twitter.com/rmanalan", :target => "_blank"} @rmanalan
+  \. The source code is available at
+  %a{:href => "http://github.com/manalang/posterit", :target => ""} GitHub
+  \.
