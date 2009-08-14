@@ -14,7 +14,7 @@ end
 
 post "/" do
   posterous = Posterous.new(params[:email], params[:password])
-  @resp = posterous.newpost(params[:title], params[:body], params[:autopost])
+  @resp = posterous.newpost(params)
   if @resp["rsp"]["stat"] == "ok"
     haml :posted
   else

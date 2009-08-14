@@ -2,29 +2,33 @@
   %a{:href => "/"} posterit
 #main
   %form{:action => "/", :method => "POST", :id => "post-form"}
-    %label{:for => "title"} Title
-    %br
-    %input{:type => "text", :value => @params[:title], :id => "post-title", :name => "title"}
-    %br
-    %label{:for => "body"} Body
-    %br
-    - if @params[:body] 
-      - body = @params[:body]
-    - elsif @params[:title] and @params[:shorturl] and @params[:source]
-      - body = "<p>Source: #{@params[:source]}: <a href='#{@params[:shorturl]}'>#{@params[:shorturl]}</a></p><div class='posterous_quote_citation'>posted from <a href='http://www.google.com/reader/view/'>Google Reader</a></div>"
-    - elsif @params[:title] and @params[:url] and @params[:source]
-      - body = "<p>Source: #{@params[:source]}: <a href='#{@params[:url]}'>#{@params[:url]}</a></p><div class='posterous_quote_citation'>posted from <a href='http://www.google.com/reader/view/'>Google Reader</a></div>"
-    - elsif @params[:title] and @params[:url]
-      - body = "<p><a href='#{@params[:url]}'>#{@params[:url]}</a></p><div class='posterous_quote_citation'>posted from <a href='http://www.google.com/reader/view/'>Google Reader</a></div>"
-    - else
-      - body = ""
-    %textarea{:id => "post-body", :name => "body"}= body
-    %br
-    %input{:type => "checkbox", :value => 0, :checked => false, :name => "autopost"}
-    %label{:for => "autopost"} Autopost everywhere
-    %br
-    %br
-    #auth
+    %p
+      %label{:for => "title"} Title
+      %br
+      %input{:type => "text", :value => @params[:title], :id => "post-title", :name => "title"}
+    %p
+      - if @params[:shorturl] or @params[:url]
+        - if @params[:shorturl]
+          - link = @params[:shorturl]
+        - else
+          -link = @params[:url]
+        %label{:for => "link"} Link
+        %br
+        %input{:type => "text", :value => link, :id => "post-link", :name => "link", :class => ""}
+        - if @params[:source]
+          %input{:type => "hidden", :value => @params[:source], :name => "source"}
+      - else
+        %label{:for => "body"} Body
+        %br
+        %textarea{:id => "post-body", :name => "body"}= @params[:body]
+    %p
+      %label{:for => "body"} Comments
+      %br
+      %textarea{:id => "post-comment", :name => "comment"}
+    %p
+      %input{:type => "checkbox", :value => 0, :checked => false, :name => "autopost"}
+      %label{:for => "autopost"} Autopost everywhere
+    %p#auth
       %label{:for => "email"} Email
       %br
       %input{:type => "text", :value => @email, :id => "posterous-email", :name => "email", :class => "text"}
